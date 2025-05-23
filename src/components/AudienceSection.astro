@@ -3,24 +3,24 @@ import AudienceCard from './cards/AudienceCard.astro';
 
 const audiences = [
     {
-        icon: 'fas fa-user-astronaut',
-        title: 'Gamers',
-        description: 'Experience gaming beyond screens with immersive mixed reality adventures that transform everyday spaces into gaming worlds.'
+        icon: 'fas fa-university',
+        title: 'Polytechnics',
+        description: 'NYP, SP, NP, RP, TP - Transform engineering education with immersive AR/VR modules for aerospace and electrical engineering programs.'
     },
     {
-        icon: 'fas fa-chalkboard-teacher',
-        title: 'Educators',
-        description: 'Create engaging, interactive learning experiences that make complex subjects tangible and bring abstract concepts to life.'
+        icon: 'fas fa-graduation-cap',
+        title: 'Universities',
+        description: 'NTU, NUS, SIT, SUTD - Advanced mixed reality solutions for higher education engineering curricula and research applications.'
+    },
+    {
+        icon: 'fas fa-tools',
+        title: 'ITE Colleges',
+        description: 'Hands-on technical training enhanced with mixed reality for practical skills development and certification programs.'
     },
     {
         icon: 'fas fa-building',
-        title: 'Businesses',
-        description: 'Enhance product visualization, training, and customer engagement with enterprise-ready mixed reality solutions.'
-    },
-    {
-        icon: 'fas fa-user-md',
-        title: 'Professionals',
-        description: 'Leverage specialized MR tools for architecture, engineering, healthcare, and other professional applications.'
+        title: 'Corporate Training',
+        description: 'ST Engineering, SP Group, Singapore Airlines - Professional development through immersive training simulations and collaborative learning environments.'
     }
 ];
 ---
@@ -28,10 +28,10 @@ const audiences = [
 <section class="section audience-section" id="audience">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Who It's For</h2>
+            <h2 class="section-title">Singapore Education Partners</h2>
             <p class="section-subtitle">
-                Terralink's versatile platform has applications across multiple sectors, 
-                serving diverse user groups with tailored experiences.
+                Terralink serves Singapore's leading educational institutions and corporate training units, 
+                focusing on engineering education and hands-on technical learning.
             </p>
         </div>
         <div class="audience-grid grid grid-auto-fit">
@@ -43,6 +43,24 @@ const audiences = [
                 />
             ))}
         </div>
+        <div class="market-summary">
+            <div class="container">
+                <div class="market-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">Target Institutions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">SGD 244K</div>
+                        <div class="stat-label">Total Addressable Market</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2026</div>
+                        <div class="stat-label">Launch Target</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -53,5 +71,42 @@ const audiences = [
 
 .audience-grid {
     gap: 30px;
+    margin-bottom: 60px;
+}
+
+.market-summary {
+    margin-top: 40px;
+    padding: 40px 0;
+    border-top: 1px solid rgba(230, 232, 234, 0.1);
+}
+
+.market-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-bronze);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #b8b8b8;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .stat-number {
+        font-size: 2rem;
+    }
 }
 </style>

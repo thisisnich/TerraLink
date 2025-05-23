@@ -1,0 +1,97 @@
+---
+import RoadmapItem from './cards/RoadMapItem.astro'; 
+
+const roadmapItems = [
+    {
+        date: 'Jan 2026',
+        phase: 'Market Research',
+        title: 'Survey & Competitor Analysis',
+        description: 'Comprehensive market research and use case scoping across Singapore\'s education sector.',
+        status: 'upcoming'
+    },
+    {
+        date: 'Mar 2026',
+        phase: 'Development',
+        title: 'Core Development (Phase 1)',
+        description: 'MVP engine development, basic MR functions implementation, and initial testing with educational partners.',
+        status: 'upcoming'
+    },
+    {
+        date: 'Sep 2026',
+        phase: 'Launch',
+        title: 'Educational Institution Pitching',
+        description: 'Roadshows and demonstrations to polytechnics, ITEs, and universities across Singapore.',
+        status: 'upcoming'
+    },
+    {
+        date: 'Oct 2026',
+        phase: 'Iteration',
+        title: 'Development Phase 2',
+        description: 'Feature refinement based on institutional trials and pilot user feedback integration.',
+        status: 'upcoming'
+    },
+    {
+        date: 'Jun 2027',
+        phase: 'Expansion',
+        title: 'Beyond Education',
+        description: 'Scale to industrial design, advertising, and cultural sectors with proven MR platform.',
+        status: 'future'
+    }
+];
+---
+
+<section class="section roadmap-section" id="roadmap">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Development Roadmap</h2>
+            <p class="section-subtitle">
+                Our strategic timeline for bringing custom mixed reality solutions to Singapore's education sector,
+                from initial development to market expansion.
+            </p>
+        </div>
+        <div class="roadmap-timeline">
+            {roadmapItems.map((item, index) => (
+                <RoadmapItem 
+                    date={item.date}
+                    phase={item.phase}
+                    title={item.title}
+                    description={item.description}
+                    status={item.status}
+                    position={index % 2 === 0 ? 'left' : 'right'}
+                />
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+.roadmap-section {
+    background-color: var(--color-charcoal);
+    position: relative;
+}
+
+.roadmap-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--color-bronze), rgba(162, 124, 82, 0.3));
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 768px) {
+    .roadmap-timeline::before {
+        left: 30px;
+        transform: none;
+    }
+}
+</style>

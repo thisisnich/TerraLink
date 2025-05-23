@@ -1,17 +1,166 @@
 ---
-// CallToActionSection.astro
+// CallToActionSection.astro - Updated for educational focus
 ---
 
 <section class="section cta" id="cta">
     <div class="container">
         <div class="cta-content">
-            <h2 class="cta-title">Ready to Transform Your Reality?</h2>
-            <p class="cta-subtitle">Join our early access program and be among the first to experience the future of mixed reality in Singapore's education sector.</p>
+            <h2 class="cta-title">Ready to Transform Engineering Education?</h2>
+            <p class="cta-subtitle">
+                Join our early access program and be among the first educational institutions in Singapore 
+                to experience the future of mixed reality learning and industrial training.
+            </p>
             <form class="newsletter-form" id="early-access-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                <button type="submit" class="newsletter-btn">Get Early Access</button>
+                <input type="email" class="newsletter-input" placeholder="Enter your institutional email" required>
+                <button type="submit" class="newsletter-btn">Request Demo</button>
             </form>
-            <p class="cta-note">Starting with Singapore's top polytechnics and universities</p>
+            <p class="cta-note">Launching with Singapore's polytechnics, universities, and ITE colleges in 2026</p>
+            <div class="cta-features">
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Custom MR Engine</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Curriculum Integration</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Multiplayer Learning</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<style>
+.cta {
+    background: linear-gradient(135deg, rgba(44, 44, 44, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%), url('/api/placeholder/1200/800') center/cover no-repeat;
+    text-align: center;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(162, 124, 82, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(162, 124, 82, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cta-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #b8b8b8;
+    line-height: 1.6;
+}
+
+.cta-note {
+    font-size: 0.9rem;
+    color: var(--color-bronze);
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto 30px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 50px 0 0 50px;
+    border: none;
+    background-color: rgba(230, 232, 234, 0.1);
+    color: var(--color-silver);
+    outline: none;
+}
+
+.newsletter-input::placeholder {
+    color: #888;
+}
+
+.newsletter-btn {
+    padding: 12px 20px;
+    border-radius: 0 50px 50px 0;
+    border: none;
+    background-color: var(--color-bronze);
+    color: var(--color-charcoal);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background-color: #b58b5e;
+}
+
+.cta-features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-silver);
+    font-size: 0.9rem;
+}
+
+.cta-feature i {
+    color: var(--color-bronze);
+}
+
+@media screen and (max-width: 768px) {
+    .cta-title {
+        font-size: 1.8rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .newsletter-input {
+        border-radius: 50px;
+    }
+    
+    .newsletter-btn {
+        border-radius: 50px;
+    }
+    
+    .cta-features {
+        gap: 20px;
+    }
+    
+    .cta-feature {
+        font-size: 0.8rem;
+    }
+}
+</style>
