@@ -120,7 +120,7 @@ p {
     width: 60px;
     height: 60px;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--color-bronze), rgba(162, 124, 82, 0.8));
+    background: linear-gradient(135deg, var(--color-bronze), rgba(95, 47, 2, 0.829));
     color: var(--color-charcoal);
     font-size: 24px;
     margin-bottom: 20px;
