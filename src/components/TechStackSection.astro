@@ -1,0 +1,164 @@
+---
+import TechCard from './cards/TechCard.astro';
+
+const techStack = [
+    {
+        icon: 'fas fa-cube',
+        title: 'Custom MR Engine',
+        description: 'Proprietary mixed reality engine built from scratch for full SDK/API integration, bypassing Unity/Unreal limitations.',
+        category: 'Core Platform'
+    },
+    {
+        icon: 'fas fa-database',
+        title: 'Convex Backend',
+        description: 'Fast iteration development backend for prototyping and early-stage testing of multiplayer features.',
+        category: 'Development'
+    },
+    {
+        icon: 'fas fa-server',
+        title: 'SpaceTime DB',
+        description: 'Production-ready backend migration target for multiplayer scenarios and spatial data scalability.',
+        category: 'Production'
+    },
+    {
+        icon: 'fas fa-vr-cardboard',
+        title: 'Meta Quest 3',
+        description: 'Primary development and deployment platform for educational institutions and corporate training.',
+        category: 'Hardware'
+    },
+    {
+        icon: 'fas fa-glasses',
+        title: 'HoloLens 2',
+        description: 'Enterprise-grade mixed reality device for professional training and industrial applications.',
+        category: 'Hardware'
+    },
+    {
+        icon: 'fas fa-eye',
+        title: 'Varjo Headsets',
+        description: 'High-fidelity development and testing units for advanced visualization and design collaboration.',
+        category: 'Hardware'
+    }
+];
+---
+
+<section class="section tech-stack-section" id="tech-stack">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Technology Architecture</h2>
+            <p class="section-subtitle">
+                Built on a foundation of cutting-edge technology, our custom MR engine delivers 
+                unmatched performance and flexibility for educational and industrial applications.
+            </p>
+        </div>
+        <div class="tech-categories">
+            <div class="tech-category">
+                <h3 class="category-title">Core Platform</h3>
+                <div class="tech-grid">
+                    {techStack.filter(tech => tech.category === 'Core Platform').map(tech => (
+                        <TechCard 
+                            icon={tech.icon}
+                            title={tech.title}
+                            description={tech.description}
+                        />
+                    ))}
+                </div>
+            </div>
+            
+            <div class="tech-category">
+                <h3 class="category-title">Backend Infrastructure</h3>
+                <div class="tech-grid">
+                    {techStack.filter(tech => tech.category === 'Development' || tech.category === 'Production').map(tech => (
+                        <TechCard 
+                            icon={tech.icon}
+                            title={tech.title}
+                            description={tech.description}
+                        />
+                    ))}
+                </div>
+            </div>
+            
+            <div class="tech-category">
+                <h3 class="category-title">Hardware Ecosystem</h3>
+                <div class="tech-grid">
+                    {techStack.filter(tech => tech.category === 'Hardware').map(tech => (
+                        <TechCard 
+                            icon={tech.icon}
+                            title={tech.title}
+                            description={tech.description}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-advantage">
+            <div class="advantage-content">
+                <h3>Why Custom-Built?</h3>
+                <p>
+                    Unlike solutions built on Unity or Unreal Engine, our proprietary MR engine gives us complete control 
+                    over performance optimization, educational feature integration, and seamless multiplayer experiences. 
+                    This translates to better learning outcomes and more efficient training programs for our partners.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.tech-stack-section {
+    background-color: var(--color-dark-charcoal);
+}
+
+.tech-categories {
+    margin-top: 40px;
+}
+
+.tech-category {
+    margin-bottom: 50px;
+}
+
+.category-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-bronze);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.tech-advantage {
+    margin-top: 60px;
+    padding: 40px;
+    background: rgba(44, 44, 44, 0.6);
+    border: 1px solid rgba(162, 124, 82, 0.2);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.tech-advantage h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-silver);
+    margin-bottom: 20px;
+}
+
+.tech-advantage p {
+    color: #b8b8b8;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

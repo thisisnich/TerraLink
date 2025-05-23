@@ -1,0 +1,59 @@
+---
+export interface Props {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<div class="tech-card card">
+    <div class="tech-icon icon">
+        <i class={icon}></i>
+    </div>
+    <div class="tech-content">
+        <h4 class="tech-title">{title}</h4>
+        <p class="tech-description">{description}</p>
+    </div>
+</div>
+
+<style>
+.tech-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-bronze);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tech-icon {
+    font-size: 28px;
+    color: var(--color-bronze);
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.tech-content {
+    flex: 1;
+}
+
+.tech-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-silver);
+    margin-bottom: 10px;
+}
+
+.tech-description {
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+</style>

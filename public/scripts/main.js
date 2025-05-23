@@ -86,7 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Intersection Observer for animations
+
+// Rest of your existing code for intersection observers and animations...    // Intersection Observer for animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe cards and sections for animation
-    const animatedElements = document.querySelectorAll('.feature-card, .audience-card, .step');
+    const animatedElements = document.querySelectorAll('.feature-card, .audience-card, .step, .budget-card');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -115,4 +116,33 @@ document.addEventListener('DOMContentLoaded', function() {
     floatingElements.forEach((el, index) => {
         el.style.animationDelay = `${index * 2}s`;
     });
+    
+    // Enhanced budget section animations
+    const budgetSection = document.querySelector('.budget-section');
+    if (budgetSection) {
+        const budgetObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate budget stats
+                    const statValues = entry.target.querySelectorAll('.stat-value');
+                    statValues.forEach((stat, index) => {
+                        setTimeout(() => {
+                            stat.style.opacity = '1';
+                            stat.style.transform = 'scale(1)';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        budgetObserver.observe(budgetSection);
+        
+        // Initialize stat animations
+        const statValues = budgetSection.querySelectorAll('.stat-value');
+        statValues.forEach(stat => {
+            stat.style.opacity = '0';
+            stat.style.transform = 'scale(0.8)';
+            stat.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+    }
 });

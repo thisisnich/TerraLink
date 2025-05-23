@@ -1,0 +1,350 @@
+---
+import BudgetCard from './cards/BudgetCard.astro';
+const budgetData = [
+    {
+        id: 'year1',
+        title: 'Year 1 — Lean Startup Budget',
+        subtitle: 'Foundation & MVP Development',
+        totalRange: 'SGD 40,100 – 64,200',
+        description: 'Starting lean with essential components to build our MVP, run pilots, and demo to institutions—maximizing impact while minimizing burn.',
+        categories: [
+            {
+                name: 'Dev Team (1–2 part-time)',
+                range: '24,000 – 36,000',
+                description: 'Interns or student developers'
+            },
+            {
+                name: 'MR Hardware (2–3 units)',
+                range: '5,000 – 8,000',
+                description: 'Meta Quest, HoloLens for development'
+            },
+            {
+                name: 'Tools/Infrastructure',
+                range: '2,000 – 4,000',
+                description: 'Backend & collaboration tools'
+            },
+            {
+                name: 'Design/Prototyping',
+                range: '3,000 – 5,000',
+                description: 'UI/UX, interaction design'
+            },
+            {
+                name: 'Demo Materials',
+                range: '1,000 – 2,000',
+                description: 'Flyers, sample packs'
+            },
+            {
+                name: 'Local Travel',
+                range: '1,000 – 2,000',
+                description: 'Demos, pitches'
+            },
+            {
+                name: 'Legal/Admin',
+                range: '1,100 – 2,200',
+                description: 'ACRA, legal templates'
+            },
+            {
+                name: 'Contingency',
+                range: '3,000 – 5,000',
+                description: 'Misc and urgent spending'
+            }
+        ],
+        phase: 'Foundation',
+        timeline: '2026'
+    },
+    {
+        id: 'year2',
+        title: 'Year 2 — Standard Operations Budget',
+        subtitle: 'Scale & Growth Operations',
+        totalRange: 'SGD 153,000 – 228,000',
+        description: 'Scaling with full-time operations, institutional rollouts, and growth initiatives—setting the stage for strong revenue and market traction.',
+        categories: [
+            {
+                name: 'Full-Time Dev Team (2–3 pax)',
+                range: '90,000 – 120,000',
+                description: 'Salaries for core developers & technical support'
+            },
+            {
+                name: 'Product Maintenance & Hosting',
+                range: '6,000 – 10,000',
+                description: 'Backend infra, SpaceTime DB, versioning, updates'
+            },
+            {
+                name: 'MR Hardware Expansion',
+                range: '5,000 – 10,000',
+                description: 'Additional headsets for deployments and support'
+            },
+            {
+                name: 'Sales & Institutional Support',
+                range: '15,000 – 25,000',
+                description: 'Travel, demos, onboarding, client training'
+            },
+            {
+                name: 'Marketing & Brand Expansion',
+                range: '10,000 – 20,000',
+                description: 'Ads, partnerships, conferences, awareness campaigns'
+            },
+            {
+                name: 'Legal, Compliance & Insurance',
+                range: '5,000 – 10,000',
+                description: 'Licensing, IP, service contracts, liability coverage'
+            },
+            {
+                name: 'Office/Co-working Space',
+                range: '12,000 – 18,000',
+                description: 'Small space for ops and client meetings'
+            },
+            {
+                name: 'Contingency & Growth Buffer',
+                range: '10,000 – 15,000',
+                description: 'Additional hires, emergencies, feature expansions'
+            }
+        ],
+        phase: 'Growth',
+        timeline: '2027'
+    },
+    {
+    id: 'year3',
+    title: 'Year 3 — Expansion Budget',
+    subtitle: 'Cross-Sector Growth: Gaming & Brand Activation',
+    totalRange: 'SGD 255,000 – 410,000',
+    description: 'Expanding beyond education into gaming, branded experiences, and other MR verticals—unlocking new revenue channels and solidifying Terralink as a cross-industry platform.',
+    categories: [
+        {
+            name: 'Expanded Dev Team (MR & Gaming)',
+            range: '120,000 – 180,000',
+            description: 'Hiring for real-time multiplayer, game design, 3D artists, and backend systems.'
+        },
+        {
+            name: 'Business Development & Partnerships',
+            range: '40,000 – 60,000',
+            description: 'Brand outreach, licensing, corporate engagement, and agency collaborations.'
+        },
+        {
+            name: 'MR Hardware Fleet',
+            range: '10,000 – 20,000',
+            description: 'Procurement of advanced MR headsets for dev, testing, and client-facing showcases.'
+        },
+        {
+            name: 'Cloud Infra & Scaling Costs',
+            range: '15,000 – 30,000',
+            description: 'Increased usage of multiplayer servers, media processing, analytics, and deployment ops.'
+        },
+        {
+            name: 'Brand/Community Marketing',
+            range: '25,000 – 50,000',
+            description: 'Influencer campaigns, social engagement, digital showcases, and trade show demos.'
+        },
+        {
+            name: 'Legal & IP',
+            range: '10,000 – 15,000',
+            description: 'IP management, licensing, contracts for content partners and industry deals.'
+        },
+        {
+            name: 'Office & Studio Expansion',
+            range: '20,000 – 30,000',
+            description: 'Larger studio space for collaborative dev, content creation, and stakeholder demos.'
+        },
+        {
+            name: 'Contingency & Experimental Budget',
+            range: '15,000 – 25,000',
+            description: 'R&D for new MR interactions, experimental content, or spatial commerce pilots.'
+        }
+    ],
+    phase: 'Cross-Sector Expansion',
+    timeline: '2028'
+}
+
+];
+---
+
+<section class="section budget-section" id="budget">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Strategic Budget Planning</h2>
+            <p class="section-subtitle">
+                Our phased approach to funding ensures sustainable growth from lean startup to 
+                full-scale operations, maximizing ROI at every stage of development.
+            </p>
+        </div>
+        
+        <div class="budget-carousel-container">
+            <div class="budget-carousel" id="budget-carousel">
+                {budgetData.map((budget, index) => (
+                    <BudgetCard 
+                        budget={budget}
+                        isActive={index === 0}
+                    />
+                ))}
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" id="budget-prev" aria-label="Previous budget">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-indicators">
+                    {budgetData.map((_, index) => (
+                        <button 
+                            class={`indicator ${index === 0 ? 'active' : ''}`}
+                            data-slide={index}
+                            aria-label={`Go to budget ${index + 1}`}
+                        >
+                        </button>
+                    ))}
+                </div>
+                <button class="carousel-btn next-btn" id="budget-next" aria-label="Next budget">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="budget-summary">
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Total 2-Year Investment</div>
+                    <div class="stat-value">SGD 193K – 292K</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Expected ROI Timeline</div>
+                    <div class="stat-value">18-24 Months</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Break-even Target</div>
+                    <div class="stat-value">8-10 Institutions</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.budget-section {
+    background-color: var(--color-dark-charcoal);
+    padding: 80px 0;
+}
+
+.budget-carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+}
+
+.budget-carousel {
+    display: flex;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.carousel-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(162, 124, 82, 0.3);
+    background: rgba(44, 44, 44, 0.8);
+    color: var(--color-bronze);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    border-color: var(--color-bronze);
+    background: var(--color-bronze);
+    color: var(--color-charcoal);
+    transform: scale(1.1);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(162, 124, 82, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--color-bronze);
+    transform: scale(1.3);
+}
+
+.budget-summary {
+    background: rgba(44, 44, 44, 0.6);
+    border: 1px solid rgba(230, 232, 234, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #b8b8b8;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-bronze);
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .budget-summary {
+        padding: 25px;
+    }
+    
+    .stat-value {
+        font-size: 1.4rem;
+    }
+    
+    .summary-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+</style>
+<script src="/public/scripts/carousel.js" is:inline></script>
