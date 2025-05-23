@@ -1,0 +1,57 @@
+---
+import AudienceCard from './cards/AudienceCard.astro';
+
+const audiences = [
+    {
+        icon: 'fas fa-user-astronaut',
+        title: 'Gamers',
+        description: 'Experience gaming beyond screens with immersive mixed reality adventures that transform everyday spaces into gaming worlds.'
+    },
+    {
+        icon: 'fas fa-chalkboard-teacher',
+        title: 'Educators',
+        description: 'Create engaging, interactive learning experiences that make complex subjects tangible and bring abstract concepts to life.'
+    },
+    {
+        icon: 'fas fa-building',
+        title: 'Businesses',
+        description: 'Enhance product visualization, training, and customer engagement with enterprise-ready mixed reality solutions.'
+    },
+    {
+        icon: 'fas fa-user-md',
+        title: 'Professionals',
+        description: 'Leverage specialized MR tools for architecture, engineering, healthcare, and other professional applications.'
+    }
+];
+---
+
+<section class="section audience-section" id="audience">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Who It's For</h2>
+            <p class="section-subtitle">
+                Terralink's versatile platform has applications across multiple sectors, 
+                serving diverse user groups with tailored experiences.
+            </p>
+        </div>
+        <div class="audience-grid grid grid-auto-fit">
+            {audiences.map(audience => (
+                <AudienceCard 
+                    icon={audience.icon}
+                    title={audience.title}
+                    description={audience.description}
+                />
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+.audience-section {
+    background-color: var(--color-dark-charcoal);
+}
+
+.audience-grid {
+    gap: 30px;
+}
+</style>

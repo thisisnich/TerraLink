@@ -1,0 +1,36 @@
+---
+export interface Props {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<div class="feature-card card">
+    <div class="feature-icon icon">
+        <i class={icon}></i>
+    </div>
+    <h3 class="feature-title">{title}</h3>
+    <p class="feature-description">{description}</p>
+</div>
+
+<style>
+.feature-card {
+    text-align: left;
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-silver);
+}
+
+.feature-description {
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+</style>

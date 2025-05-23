@@ -1,0 +1,124 @@
+---
+// Header component with navigation
+---
+
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">Terra<span>link</span></div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#audience">Who It's For</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<style>
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(44, 44, 44, 0.95);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.header.scrolled {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-silver);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.logo span {
+    color: var(--color-bronze);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--color-silver);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-bronze);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-bronze);
+}
+
+.nav-links a:hover:after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-silver);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        flex-direction: column;
+        background-color: var(--color-dark-charcoal);
+        top: 80px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: all 0.4s ease;
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    .nav-links a {
+        padding: 15px 30px;
+    }
+}
+</style>

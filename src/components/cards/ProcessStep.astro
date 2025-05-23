@@ -1,0 +1,54 @@
+---
+export interface Props {
+    number: number;
+    title: string;
+    description: string;
+}
+
+const { number, title, description } = Astro.props;
+---
+
+<div class="process-step">
+    <div class="step-number">{number}</div>
+    <h3 class="step-title">{title}</h3>
+    <p class="step-description">{description}</p>
+</div>
+
+<style>
+.process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 250px;
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-bronze);
+    color: var(--color-charcoal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.step-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-silver);
+}
+
+.step-description {
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+</style>

@@ -1,0 +1,80 @@
+---
+import ProcessStep from './cards/ProcessStep.astro';
+
+const steps = [
+    {
+        number: 1,
+        title: 'Download',
+        description: 'Install the Terralink app on your compatible AR headset, smartphone, or tablet.'
+    },
+    {
+        number: 2,
+        title: 'Setup',
+        description: 'Create your profile and complete a quick room scan to calibrate the mixed reality environment.'
+    },
+    {
+        number: 3,
+        title: 'Choose',
+        description: 'Select from a variety of experiences, from games to educational modules to professional tools.'
+    },
+    {
+        number: 4,
+        title: 'Experience',
+        description: 'Immerse yourself in a new dimension where digital and physical worlds blend seamlessly.'
+    }
+];
+---
+
+<section class="section how-it-works-section" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">
+                Getting started with Terralink is simple. Follow these steps to begin your mixed reality journey.
+            </p>
+        </div>
+        <div class="process-steps">
+            <div class="step-connector"></div>
+            {steps.map(step => (
+                <ProcessStep 
+                    number={step.number}
+                    title={step.title}
+                    description={step.description}
+                />
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+.how-it-works-section {
+    background-color: var(--color-charcoal);
+}
+
+.process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.step-connector {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .step-connector {
+        display: block;
+        position: absolute;
+        height: 3px;
+        background-color: rgba(162, 124, 82, 0.3);
+        top: 25px;
+        width: calc(100% - 300px);
+        z-index: -1;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+</style>

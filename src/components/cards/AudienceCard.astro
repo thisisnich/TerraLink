@@ -1,0 +1,46 @@
+---
+export interface Props {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<div class="audience-card card">
+    <div class="audience-icon">
+        <i class={icon}></i>
+    </div>
+    <h3 class="audience-title">{title}</h3>
+    <p class="audience-description">{description}</p>
+</div>
+
+<style>
+.audience-card {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.audience-card:hover {
+    border-color: var(--color-bronze);
+}
+
+.audience-icon {
+    font-size: 40px;
+    color: var(--color-bronze);
+    margin-bottom: 20px;
+}
+
+.audience-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-silver);
+}
+
+.audience-description {
+    color: #b8b8b8;
+    line-height: 1.6;
+}
+</style>
