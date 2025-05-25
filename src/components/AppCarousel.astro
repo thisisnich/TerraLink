@@ -1,0 +1,538 @@
+---
+// TerralinkImageCarousel.astro
+
+const terralinkImages = [
+    {
+        id: 1,
+        url: "https://res.cloudinary.com/davx3rrjg/image/upload/v1748190325/WhatsApp_Image_2025-05-24_at_22.52.09_a6975dca_eg8okj.jpg",
+        title: "Object Scanning Interface",
+        description: "Intuitive mobile interface for scanning and placing 3D objects in real-world environments. Students can interact with engineering components using their smartphones.",
+        type: "Mobile AR"
+    },
+    {
+        id: 2,
+        url: "https://res.cloudinary.com/davx3rrjg/image/upload/v1748190325/WhatsApp_Image_2025-05-24_at_22.52.09_d6368a59_nc6su2.jpg",
+        title: "Environmental Data Visualization",
+        description: "Real-time environmental monitoring with holographic overlays. Perfect for engineering students studying environmental systems and data analysis.",
+        type: "HoloLens MR"
+    },
+    {
+        id: 3,
+        url: "https://res.cloudinary.com/davx3rrjg/image/upload/v1748190325/WhatsApp_Image_2025-05-24_at_22.52.09_ff816ad6_lvbtqk.jpg",
+        title: "Multi-User AR Education",
+        description: "Students collaborate on complex engineering projects through shared AR experiences. Aerospace and electrical engineering made interactive and engaging.",
+        type: "Collaborative Learning"
+    }
+];
+---
+
+<section class="terralink-carousel-section" id="ui-gallery">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">UI/UX Experience</h2>
+            <p class="section-subtitle">
+                Building a seamless integrated XR interface for education and industrial training
+            </p>
+        </div>
+        
+        <div class="carousel-container">
+            <!-- Tech Background -->
+            <div class="tech-background">
+                <div class="floating-icons">
+                    {Array.from({ length: 6 }, (_, i) => {
+                        const icons = ['fa-cube', 'fa-vr-cardboard', 'fa-cogs', 'fa-graduation-cap', 'fa-mobile-alt', 'fa-eye'];
+                        const positions = [
+                            { top: '20%', left: '10%' },
+                            { top: '60%', left: '80%' },
+                            { top: '40%', right: '15%' },
+                            { bottom: '30%', left: '20%' },
+                            { top: '15%', right: '25%' },
+                            { bottom: '20%', right: '40%' }
+                        ];
+                        return (
+                            <i 
+                                class={`fas ${icons[i]}`}
+                                style={`
+                                    ${positions[i].top ? `top: ${positions[i].top};` : ''}
+                                    ${positions[i].bottom ? `bottom: ${positions[i].bottom};` : ''}
+                                    ${positions[i].left ? `left: ${positions[i].left};` : ''}
+                                    ${positions[i].right ? `right: ${positions[i].right};` : ''}
+                                    animation-delay: ${i}s;
+                                `}
+                            ></i>
+                        )
+                    })}
+                </div>
+            </div>
+
+            <!-- Image Container -->
+            <div class="image-container">
+                {terralinkImages.map((image, index) => (
+                    <div class={`slide ${index === 0 ? 'active' : ''}`} data-slide={index}>
+                        <img src={image.url} alt={image.title} class="slide-image" />
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="type-badge">
+                                <i class={`fas ${
+                                    image.type === 'Mobile AR' ? 'fa-mobile-alt' :
+                                    image.type === 'HoloLens MR' ? 'fa-vr-cardboard' :
+                                    'fa-users'
+                                }`}></i>
+                                <span>{image.type}</span>
+                            </div>
+                            <h3 class="slide-title">{image.title}</h3>
+                            <p class="slide-description">{image.description}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Navigation Controls -->
+            <button class="nav-btn nav-prev" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn nav-next" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Bottom Controls -->
+        <div class="carousel-controls">
+            <div class="dot-indicators">
+                {terralinkImages.map((_, index) => (
+                    <button class={`dot ${index === 0 ? 'active' : ''}`} data-slide={index}></button>
+                ))}
+            </div>
+            
+            <button class="autoplay-toggle" id="autoplayBtn">
+                <div class="autoplay-indicator active"></div>
+                <span>Auto</span>
+            </button>
+        </div>
+
+        <div class="carousel-counter">
+            <span id="currentSlide">1</span> of <span>{terralinkImages.length}</span>
+        </div>
+    </div>
+</section>
+
+<style>
+:root {
+    --color-bronze: #cd7f32;
+    --color-dark-charcoal: #1a1a1a;
+}
+
+.terralink-carousel-section {
+    background: linear-gradient(315deg, var(--color-dark-charcoal) 0%, var(--color-charcoal) 100%);
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #fff 0%, var(--color-bronze) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #b8b8b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #000 0%, #1a1a2e 50%, #16213e 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.tech-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: linear-gradient(45deg, #1a237e 0%, #4a148c 50%, #000 100%);
+    opacity: 0.1;
+}
+
+.floating-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.floating-icons i {
+    position: absolute;
+    color: var(--color-bronze);
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.6;
+    }
+}
+
+.image-container {
+    position: relative;
+    height: 700px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    z-index: 2;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+    z-index: 3;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    color: white;
+    z-index: 4;
+}
+
+.type-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--color-bronze);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.slide-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #fff 0%, var(--color-bronze) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.slide-description {
+    font-size: 1rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(205, 127, 50, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--color-bronze);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: var(--color-bronze);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+
+.nav-btn:hover {
+    background: rgba(205, 127, 50, 0.4);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
+}
+
+.nav-prev {
+    left: 20px;
+}
+
+.nav-next {
+    right: 20px;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+}
+
+.dot-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--color-bronze);
+    transform: scale(1.25);
+    box-shadow: 0 0 15px rgba(205, 127, 50, 0.5);
+}
+
+.autoplay-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: var(--color-bronze);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.autoplay-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(205, 127, 50, 0.5);
+}
+
+.autoplay-toggle.paused {
+    background: #666;
+}
+
+.autoplay-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    animation: pulse 2s infinite;
+}
+
+.autoplay-indicator.paused {
+    animation: none;
+    background: #999;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.carousel-counter {
+    text-align: center;
+    margin-top: 15px;
+    color: #b8b8b8;
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .image-container {
+        height: 400px;
+    }
+    
+    .slide-title {
+        font-size: 2rem;
+    }
+    
+    .slide-description {
+        font-size: 0.9rem;
+    }
+    
+    .slide-content {
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .carousel-controls {
+        padding: 15px 20px;
+    }
+}
+</style>
+
+<script>
+class TerralinkCarousel {
+    constructor() {
+        this.currentIndex = 0;
+        this.slides = document.querySelectorAll('.slide');
+        this.dots = document.querySelectorAll('.dot');
+        this.totalSlides = this.slides.length;
+        this.isAutoPlaying = true;
+        this.autoPlayInterval = null;
+        
+        this.init();
+    }
+    
+    init() {
+        // Navigation buttons
+        document.getElementById('prevBtn').addEventListener('click', () => this.previousSlide());
+        document.getElementById('nextBtn').addEventListener('click', () => this.nextSlide());
+        
+        // Dot indicators
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Autoplay toggle
+        document.getElementById('autoplayBtn').addEventListener('click', () => this.toggleAutoplay());
+        
+        // Start autoplay
+        this.startAutoplay();
+        
+        // Pause on hover
+        const container = document.querySelector('.carousel-container');
+        container.addEventListener('mouseenter', () => this.pauseAutoplay());
+        container.addEventListener('mouseleave', () => this.resumeAutoplay());
+    }
+    
+    goToSlide(index) {
+        // Remove active class from current slide and dot
+        this.slides[this.currentIndex].classList.remove('active');
+        this.dots[this.currentIndex].classList.remove('active');
+        
+        // Update current index
+        this.currentIndex = index;
+        
+        // Add active class to new slide and dot
+        this.slides[this.currentIndex].classList.add('active');
+        this.dots[this.currentIndex].classList.add('active');
+        
+        // Update counter
+        const counterElement = document.getElementById('currentSlide');
+        if (counterElement) {
+            counterElement.textContent = (this.currentIndex + 1).toString();
+        }
+    }
+    
+    nextSlide() {
+        const nextIndex = this.currentIndex === this.totalSlides - 1 ? 0 : this.currentIndex + 1;
+        this.goToSlide(nextIndex);
+    }
+    
+    previousSlide() {
+        const prevIndex = this.currentIndex === 0 ? this.totalSlides - 1 : this.currentIndex - 1;
+        this.goToSlide(prevIndex);
+    }
+    
+    startAutoplay() {
+        if (this.isAutoPlaying) {
+            this.autoPlayInterval = setInterval(() => {
+                this.nextSlide();
+            }, 5000);
+        }
+    }
+    
+    pauseAutoplay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+        }
+    }
+    
+    resumeAutoplay() {
+        if (this.isAutoPlaying) {
+            this.startAutoplay();
+        }
+    }
+    
+    toggleAutoplay() {
+        this.isAutoPlaying = !this.isAutoPlaying;
+        const btn = document.getElementById('autoplayBtn');
+        const indicator = btn.querySelector('.autoplay-indicator');
+        
+        if (this.isAutoPlaying) {
+            btn.classList.remove('paused');
+            indicator.classList.remove('paused');
+            btn.querySelector('span').textContent = 'Auto';
+            this.startAutoplay();
+        } else {
+            btn.classList.add('paused');
+            indicator.classList.add('paused');
+            btn.querySelector('span').textContent = 'Manual';
+            this.pauseAutoplay();
+        }
+    }
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new TerralinkCarousel();
+});
+</script>
